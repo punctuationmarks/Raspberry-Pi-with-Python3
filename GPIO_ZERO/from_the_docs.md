@@ -29,7 +29,6 @@ led = LED("BCM17")
 led = LED("WPIO")
 led = LED("BOARD11")
 led  LED("J8:11")
-
 ```
 
 - the GPIO once referenced has a good deal of information
@@ -54,6 +53,8 @@ This the GPIO vs board pin layout of the RPi.
 [//]: # (Testing out comments in Markdown. This should display an image below)
 
 ![GPIO pins of RPi](http://gpiozero.readthedocs.io/en/stable/_images/pin_layout.svg "GPIO pin of RaspberryPi")
+
+
 
 
 
