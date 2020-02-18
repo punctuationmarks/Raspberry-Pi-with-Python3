@@ -131,10 +131,11 @@ def music_player(gpio_pins=None):
 
     button_sounds = {
         # note, pygame needs .wav files to make this useful
-        Button(gpio_pins[0]): Sound("path-to-soudn/sound0.wav"),
-        Button(gpio_pins[1]): Sound("path-to-soudn/sound1.wav"),
-        Button(gpio_pins[2]): Sound("path-to-soudn/sound2.wav"),
-        Button(gpio_pins[3]): Sound("path-to-soudn/sound3.wav")
+        # so convert as needed
+        Button(gpio_pins[0]): Sound("./music_files_from_sonic_pi/samples/ambi_choir.wav"),
+        Button(gpio_pins[1]): Sound("./music_files_from_sonic_pi/samples/ambi_dark_woosh.wav"),
+        Button(gpio_pins[2]): Sound("./music_files_from_sonic_pi/samples/ambi_drone.wav"),
+        Button(gpio_pins[3]): Sound("./music_files_from_sonic_pi/samples/ambi_glass_hum.wav")
     }
 
     # looping over the dictionary and allowing the buttons to call the sound
@@ -168,6 +169,7 @@ def testing_list_to_dict_printing(some_list=None):
 
 
 # another option for yusing a button to play music
+# with hardcoded buttons and music wav files
 def music_player_from_Rpi_projects():
 
     from gpiozero import Button
@@ -176,10 +178,10 @@ def music_player_from_Rpi_projects():
     pygame.init()
 
     # grabbing each sound you want to use
-    drum = pygame.mixer.Sound("path-to-sound/drum_tom_mid_hard.wav")
-    cymbal = pygame.mixer.Sound("path-to-sound/drum_cymbal_hard.wav")
-    snare = pygame.mixer.Sound("path-to-sound/drum_snare_hard.wav")
-    cow_bell = pygame.mixer.Sound("path-to-sound/drum_cowbell.wav")
+    drum = pygame.mixer.Sound("./music_files_from_sonic_pi/samples/drum_tom_mid_hard.wav")
+    cymbal = pygame.mixer.Sound("./music_files_from_sonic_pi/samples/drum_cymbal_hard.wav")
+    snare = pygame.mixer.Sound("./music_files_from_sonic_pi/samples/drum_snare_hard.wav")
+    cow_bell = pygame.mixer.Sound("./music_files_from_sonic_pi/samples/drum_cowbell.wav")
     # you can play the individual sound by calling play()
     # drum.play()
 
