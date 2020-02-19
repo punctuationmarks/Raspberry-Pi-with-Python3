@@ -11,7 +11,7 @@ from time import sleep
 GPIO.setmode(GPIO.BCM)
 
 
-totalBlinkCount = 10
+totalBlinkCount = 5
 currentCount = 0
 # where the led is connected to
 # getting its powersource
@@ -22,15 +22,32 @@ LEDPin = 22
 # or if it's an input (i.e. button)
 GPIO.setup(LEDPin, GPIO.OUT)
 
+'''
+This is wrapped in a try statement, because we don't want this
+to get stuck running (e.g. in case of program crash)
+and using "finally" to clean up the GPIO pins (i.e. setting 
+them back to a neutral state, instead of any electricity flowing to them 
+in a low or high state, unknowingly)
 
+which is best practices, and your program will actually 
+give an error code if you don't clean up the GPIO pins
 
-while currentCount < totalBlinkCount:
-	# giving power to the led, 
-	GPIO.output(LEDPin, True)
-	print("LED on")
-	sleep(3)
-	# turning off the led power source
-	GPIO.output(LEDPin, False)
-	print("LED off")
-	sleep(1)
-	currentCount += 1
+example error if run without clean up on second run:
+	RuntimeWarning: This channel is already in use, continuing anyway.  
+	Use GPIO.setwarnings(False) to disable warnings.
+'''
+try:
+	while currentCount < totalBlinkCount:
+		# giving power to the led, 
+		GPIO.output(LEDPin, True)
+		print("LED on")
+		sleep(2)
+		# turning off the led power source
+		GPIO.output(LEDPin, False)
+		print("LED off")
+		sleep(1)
+		currentCount += 1
+finally:
+	GPIO.cleanup()
+	print("GPIO.cleanup() ran")
+
