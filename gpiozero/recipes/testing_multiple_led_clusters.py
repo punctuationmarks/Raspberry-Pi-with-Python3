@@ -1,25 +1,18 @@
-'''
-Note, this will not be able to run or even be imported
-on a linux machine that isn't a Raspberry pi, 
-this is due to not having GPIO pins 
-(it fails at library import)
-'''
-
-
 # Basic "Recipes" via GPIOzero's docs
-# import gpiozero
-# from gpiozero import Button
-# from gpiozero import LED
-
+import gpiozero
+from gpiozero import Button
+from gpiozero import LED
+from gpiozero import PWMLED
+from time import sleep
 
 # led =  LED(26)
 # led = LED("GPIO16")
 # led = LED("BOARD37")
 
+#ledCluster = LED(26)
 
 # making an led blink
 def blinkingLED(gpio=""):
-    from time import sleep
     led = LED(gpio)
     time = 5
     while time > 0:
@@ -30,21 +23,14 @@ def blinkingLED(gpio=""):
         led.off()
         sleep(0.5)
 
+# this GPIO is a custer of 4 LEDs each with their own resistors
+# This will run first and then run down to the next LED  function
+blinkingLED("GPIO26")
 
-# blinkingLED("BOARD27")
-
-# LED also has a blink method
-# from signal import pause
-# led = LED(gpio)
-# led.blink()
-# pause()
 
 
 def ledWithVaryingBrightness(gpio=""):
-    from gpiozero import PWMLED
-    from time import sleep
     led = PWMLED(gpio)
-
     time = 5
     while time > 0:
         time -= 1
@@ -56,11 +42,10 @@ def ledWithVaryingBrightness(gpio=""):
         led.value = 1  # full brightness
         sleep(1)
 
-# ledWithVaryingBrightness("BOARD13")
 
-# PWMLED also has built in pulse method
-# led = PWMLED(x)
-# led.pulse()
+# this is using mutltiple LEDs on different GPIO pins
+# but clustered on the GND
+ledWithVaryingBrightness("GPIO18")
 
 
 # these are all the same GPIO pin

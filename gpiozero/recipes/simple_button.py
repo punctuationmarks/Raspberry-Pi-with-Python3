@@ -1,14 +1,18 @@
-from gpiozero import Button
-import RPi.GPIO as GPIO
+from gpiozero import LED, Button
+from signal import pause
 
-btn = Button(27)
+led = LED(26)
+btn = Button(4)
 
-def hello():
-	print("Hello")
 
-while True:
-	try:
-		btn.when_pressed = hello
+print("led: ", led)
+print("btn: ", btn)
+# led:  <gpiozero.LED object on pin GPIO26, active_high=True, is_active=False>
+# btn:  <gpiozero.Button object on pin GPIO4, pull_up=True, is_active=False>
 
-	finally:
-		GPIO.cleanup()
+
+btn.when_pressed = led.on
+btn.when_released = led.off
+
+
+pause()
