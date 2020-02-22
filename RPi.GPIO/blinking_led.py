@@ -15,8 +15,7 @@ totalBlinkCount = 5
 currentCount = 0
 # where the led is connected to
 # getting its powersource
-LEDPin = 22
-
+LEDPin = 2
 # setting up the led pin, 
 # have to specify if it's an output (e.g. giving signal)
 # or if it's an input (i.e. button)

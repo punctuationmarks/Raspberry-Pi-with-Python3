@@ -4,10 +4,10 @@ from time import sleep
 GPIO.setmode(GPIO.BCM)
 
 # GPIO22
-ledPin = 22
+ledPin = 26
 # GPIO5
 # buttonPin = 5
-buttonPin = 26
+buttonPin = 27
 
 # keeping track of the count
 # so the program doesn't run indefinitely, 
