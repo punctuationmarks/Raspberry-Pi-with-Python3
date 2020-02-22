@@ -29,36 +29,35 @@ def blinkingLED(gpio=""):
 #blinkingLED("GPIO26")
 
 
+from pygame.mixer import Sound
 
-def ledWithVaryingBrightness(gpio="GPIO26"):
+pygame.mixer.init()
+
+
+
+def ledWithVaryingBrightness(gpio="GPIO26"):\
+    # PWM (pulse-width-modulation)
 	led = PWMLED(gpio)
-	led.value = 0  # off
-	sleep(1)
 	led.value = 0.5  # half brightness
 	sleep(1)
 	led.value = 1  # full brightness
 	sleep(1)
+	led.value = 0  # off
+	sleep(1)
+
+sound = Sound("../../music_files_from_ sonic_pi/samples/bass_voxy_c.wav")
 
 
-# GPIOzero's Button.when_pressed
-def print_something_on_button_press():
-    print("when called, this prints")
-
-
-def button_pressed_calls_function(gpio=""):
-
+def button_press_causes_light_(gpio=""):
     button = Button(gpio)
-    '''
-        Note: when calling a function with button.when_pressed, the function
-        does not have parentheses () on the function
-        Check the docs for explanation, but will not run right with ()
-        '''
-# this will use the default LED since I can't pass a variable to the function
-# (as far as I know)
-    button.when_pressed = ledWithVaryingBrightness
+    # this will use the default LED since I can't pass a variable to the function
+    # (as far as I know)
+    # button.when_pressed = ledWithVaryingBrightness
+    button.when_pressed = sound.play
+    
     pause()
 
 
 # calling the button in the function
-button_pressed_calls_function("GPIO21")
+button_press_causes_light_("GPIO21")
 

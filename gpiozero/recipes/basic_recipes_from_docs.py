@@ -43,6 +43,7 @@ def blinkingLED(gpio=""):
 def ledWithVaryingBrightness(gpio=""):
     from gpiozero import PWMLED
     from time import sleep
+    # PWM (pulse-width-modulation)
     led = PWMLED(gpio)
 
     time = 5
