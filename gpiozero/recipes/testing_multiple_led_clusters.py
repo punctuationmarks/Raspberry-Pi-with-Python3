@@ -4,6 +4,9 @@ from gpiozero import Button
 from gpiozero import LED
 from gpiozero import PWMLED
 from time import sleep
+import pygame
+
+pygame.mixer.init()
 
 # led =  LED(26)
 # led = LED("GPIO16")
@@ -11,19 +14,24 @@ from time import sleep
 
 #ledCluster = LED(26)
 
+# has errors with importing the audio file, don't know why
+#sound = pygame.mixer.Sound("audioFiles/BaseAfterBase.mp3")
+
+
+
 # making an led blink
 def blinkingLED(gpio=""):
-    led = LED(gpio)
-    time = 5
-    while time > 0:
-        time -= 1
-        print(time)
-        led.on()
-        sleep(0.5)
-        led.off()
-        sleep(0.5)
+	led = LED(gpio)
+	time = 5
+	while time > 0:
+		time -= 1
+		print(time)
+		led.on()
+		sleep(0.5)
+		led.off()
+#		sound.play()
+		sleep(0.5)
 
-# this GPIO is a custer of 4 LEDs each with their own resistors
 # This will run first and then run down to the next LED  function
 blinkingLED("GPIO26")
 
@@ -48,32 +56,12 @@ def ledWithVaryingBrightness(gpio=""):
 ledWithVaryingBrightness("GPIO18")
 
 
-# these are all the same GPIO pin
-# button = Button(27)
-# button = Button("GPIO27")
-# button = Button("BOARD13")
-
-
-# print(button)
-# <gpiozero.Button object on pin GPIO22, pull_up=True, is_active=False>
-
-# print(type(button))
-# <class 'gpiozero.input_devices.Button'>
-
-# print(button.is_pressed)
-# False
-
-# print(type(button.is_pressed))
-# <class 'bool'>
-
 # GPIOzero's Button.is_pressed
 def button_pressed_funct(button):
     if button.is_pressed:
         print("Button has been pressed\nBoolean=1")
     else:
         print("Button has not been pressed\nBoolean=0")
-
-# button_pressed_funct(buttonPin22)
 
 
 # GPIOzero's Button.wait_for_press()
