@@ -22,12 +22,14 @@ sound = Sound("/home/pi/Raspberry-Pi-with-Python3/music_files_from_sonic_pi/samp
 def activate_light_sound_1():
     led_1.on()
     sound.play()
+    sleep(0.2)
     print("led_1 on and sound playing!")
     led_1.off()
 
 def activate_light_sound_2():
     led_2.on()
     sound.play()
+    sleep(0.2)
     print("led_2 on and sound playing!")
     led_2.off()
 
