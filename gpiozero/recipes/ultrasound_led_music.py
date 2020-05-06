@@ -43,7 +43,7 @@ while True:
     if inches_1 >= 8.0:
         distance_too_far = inches_1 - 8
         print(f"{distance_too_far} inches_1 too far, come closer")
-    if inches_1 < 2.0:
+    elif inches_1 < 2.0:
         distance_too_close = inches_1
         print(f"{distance_too_close} inches_1 too close, move back!")
     else:
@@ -54,7 +54,7 @@ while True:
     if inches_2 >= 8.0:
         distance_too_far = inches_2 - 8
         print(f"{distance_too_far} inches_2 too far, come closer")
-    if inches_2 < 2.0:
+    elif inches_2 < 2.0:
         distance_too_close = inches_2
         print(f"{distance_too_close} inches_2 too close, move back!")
     else:
