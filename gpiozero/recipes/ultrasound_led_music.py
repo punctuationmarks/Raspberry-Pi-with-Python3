@@ -16,19 +16,20 @@ led_2 = LED(13)
 led_1.off()
 led_2.off()
 
-sound = Sound("/home/pi/Raspberry-Pi-with-Python3/music_files_from_sonic_pi/samples/glitch_perc5.wav")
+sound_1 = Sound("/home/pi/Raspberry-Pi-with-Python3/music_files_from_sonic_pi/samples/glitch_perc5.wav")
+sound_2 = Sound("/home/pi/Raspberry-Pi-with-Python3/music_files_from_sonic_pi/samples/elec_blip.wav")
 
 
 def activate_light_sound_1():
     led_1.on()
-    sound.play()
+    sound_1.play()
     sleep(0.2)
     print("led_1 on and sound playing!")
     led_1.off()
 
 def activate_light_sound_2():
     led_2.on()
-    sound.play()
+    sound_2.play()
     sleep(0.2)
     print("led_2 on and sound playing!")
     led_2.off()
