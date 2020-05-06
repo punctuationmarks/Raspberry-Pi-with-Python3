@@ -23,13 +23,13 @@ def activate_light_sound_1():
     led_1.on()
     sound.play()
     print("led_1 on and sound playing!")
-
+    led_1.off()
 
 def activate_light_sound_2():
     led_2.on()
     sound.play()
     print("led_2 on and sound playing!")
-
+    led_2.off()
 
 while True:
     cm_1 = sensor_1.distance * 100
