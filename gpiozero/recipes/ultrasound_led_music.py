@@ -36,27 +36,28 @@ while True:
     cm_2 = sensor_2.distance * 100
     inches_1 = cm_1 / 2.5
     inches_2 = cm_2 / 2.5
-    print(inches_1)
-    print(inches_2)
-    sleep(0.25)
+    # print(inches_1)
+    # print(inches_2)
+    sleep(0.1)
 
     if inches_1 >= 8.0:
         distance_too_far = inches_1 - 8
-        print("f{distance_too_far} inches_1 too far, come closer")
+        print(f"{distance_too_far} inches_1 too far, come closer")
     if inches_1 < 2.0:
         distance_too_close = inches_1
-        print("f{distance_too_close} inches_1 too close, move back!")
+        print(f"{distance_too_close} inches_1 too close, move back!")
     else:
         activate_light_sound_1()
+        sleep(0.1)
             
     
     if inches_2 >= 8.0:
         distance_too_far = inches_2 - 8
-        print("f{distance_too_far} inches_2 too far, come closer")
+        print(f"{distance_too_far} inches_2 too far, come closer")
     if inches_2 < 2.0:
         distance_too_close = inches_2
-        print("f{distance_too_close} inches_2 too close, move back!")
+        print(f"{distance_too_close} inches_2 too close, move back!")
     else:
         activate_light_sound_2()
-            
+        sleep(0.1)
             
