@@ -1,0 +1,15 @@
+Adafruit-Blinka==5.4.0
+adafruit-circuitpython-neopixel==6.0.0
+adafruit-circuitpython-pypixelbuf==2.1.2
+Adafruit-PlatformDetect==2.17.0
+Adafruit-PureIO==1.1.5
+colorzero==1.1
+gpio==0.3.0
+gpiozero==1.5.1
+pyftdi==0.52.0
+pygame==1.9.6
+pyserial==3.4
+pyusb==1.1.0
+rpi-ws281x==4.2.4
+RPi.GPIO==0.7.0
+sysv-ipc==1.0.1
