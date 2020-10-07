@@ -1,7 +1,7 @@
 from gpiozero import DistanceSensor 
 from time import sleep
 
-sensor = DistanceSensor(echo=20, trigger=16)
+sensor = DistanceSensor(echo=18, trigger=17)
 while True:
     cm = sensor.distance * 100
     inch = cm / 2.5
