@@ -2,6 +2,15 @@
 import time
 import board
 import neopixel
+import gpiozero
+from gpiozero import (Button, DistanceSensor, LED)
+from time import sleep
+from signal import pause
+import os
+
+
+# ultrasonic sensor
+sensor = DistanceSensor(echo=23, trigger=17)
 
 
 # Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
@@ -43,7 +52,7 @@ def wheel(pos):
 
 
 def rainbow_cycle(wait):
-    for j in range(255):
+    for j in range(10):
         for i in range(num_pixels):
             pixel_index = (i * 256 // num_pixels) + j
             pixels[i] = wheel(pixel_index & 255)
@@ -51,30 +60,44 @@ def rainbow_cycle(wait):
         time.sleep(wait)
 
 
+
+
 x = 2
 
-while x > 0:
+while True:
+    cm = sensor.distance * 100
+    inches = cm / 2.5
+    sleep(0.1)
+    
+    if inches >= 8.0:
+        tooFar = inches - 8
+        print(f"{tooFar} inches too far")
+        pixels.fill((0, 0, 0))
+    elif inches < 2.0:
+        print("too close")
+        pixels.fill((0, 0, 0))
+    else:
     # Comment this line out if you have RGBW/GRBW NeoPixels
-    pixels.fill((255, 0, 0))
+#        pixels.fill((255, 0, 0))
     # Uncomment this line if you have RGBW/GRBW NeoPixels
-    # pixels.fill((255, 0, 0, 0))
-    pixels.show()
-    time.sleep(1)
+        rainbow_cycle(1)
+        pixels.show()
+        time.sleep(0.1)
 
     # Comment this line out if you have RGBW/GRBW NeoPixels
-    pixels.fill((0, 255, 0))
+#    pixels.fill((0, 255, 0))
     # Uncomment this line if you have RGBW/GRBW NeoPixels
     # pixels.fill((0, 255, 0, 0))
-    pixels.show()
-    time.sleep(1)
+#    pixels.show()
+#    time.sleep(1)
 
     # Comment this line out if you have RGBW/GRBW NeoPixels
-    pixels.fill((0, 0, 255))
+#    pixels.fill((0, 0, 255))
     # Uncomment this line if you have RGBW/GRBW NeoPixels
     # pixels.fill((0, 0, 255, 0))
-    pixels.show()
-    time.sleep(1)
+#    pixels.show()
+#    time.sleep(1)
 
-    rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
-    x -=1	
-    print(x)
+#    rainbow_cycle(0.001)  # rainbow cycle with 1ms delay per step
+#    x -=1	
+#    print(x)
