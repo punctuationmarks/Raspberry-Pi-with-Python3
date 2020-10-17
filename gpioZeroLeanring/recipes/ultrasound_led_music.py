@@ -21,8 +21,9 @@ led_2 = LED(13)
 led_1.off()
 led_2.off()
 
-sound_1 = Sound("../audioFiles/glitch_perc5.wav")
-sound_2 = Sound("../audioFiles/elec_blip.wav")
+
+sound_1 = Sound("./audioFiles/glitch_perc5.wav")
+sound_2 = Sound("./audioFiles/elec_blip.wav")
 
 
 def activateSoundAndLight(led, sound):
@@ -37,9 +38,7 @@ while True:
     cm_2 = sensor_2.distance * 100
     inches_1 = cm_1 / 2.5
     inches_2 = cm_2 / 2.5
-    # print(inches_1)
-    # print(inches_2)
-    sleep(0.1)
+    sleep(0.3)
 
     if inches_1 >= 8.0:
         distance_too_far = inches_1 - 8
@@ -59,4 +58,4 @@ while True:
         print(f"{distance_too_close} inches_2 too close, move back!")
     elif (2.0 < inches_2 <= 8.0):
         activateSoundAndLight(led_2, sound_2)
-        sleep(0.1)        
+        sleep(0.1)
