@@ -1,3 +1,6 @@
+# simple beatbox machine with buttons and a single led light
+# concept taken and expanded from RPi foundation tutorials
+
 import gpiozero
 from gpiozero import Button
 from gpiozero import LED
@@ -32,7 +35,6 @@ def activate_bass():
 	print("Bass and light!")
 	led4.on()
 	bass.play()
-	#os.system("omxplayer /home/pi/Raspberry-Pi-with-Python3/music_files_from_sonic_pi/samples/glitch_bass_g.wav")
 
 def activate_snare():
 	print("Snare and light")
@@ -56,8 +58,6 @@ btn3.when_released = led4.off
 
 btn4.when_pressed = activate_glitch
 btn4.when_released = led4.off
-
-
 
 pause()
 

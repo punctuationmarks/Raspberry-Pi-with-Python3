@@ -1,24 +1,25 @@
+# PIR is a motion sensor that is a "passive infrared sensor" meaning it detects heat, but is slow at the process
+# these sensors are good for things like turning on the lights when someone walks into a room
+
 from gpiozero import LED
 from gpiozero import MotionSensor
 import time
 
 
-led_cluster = LED(4)
+led = LED(4)
 pir = MotionSensor(23)
 print(pir)
 
-# led_cluster.on()
-# time.sleep(5)
-led_cluster.off()
+led.off()
 
 
 while True:
         pir.wait_for_motion()
         print("There's motion!")
-        led_cluster.on()
+        led.on()
 #       time.sleep(1)
         pir.wait_for_no_motion()
         time.sleep(1)
-        led_cluster.off()
+        led.off()
         print("No motion!")
 
