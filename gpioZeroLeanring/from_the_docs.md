@@ -20,7 +20,7 @@ you're coming from.
 
 - Different ways of referencing GPIO pins
 
-```
+```python
 # these all reference the same GPIO pin
 led = LED(17)
 led = LED("GPIO17")
